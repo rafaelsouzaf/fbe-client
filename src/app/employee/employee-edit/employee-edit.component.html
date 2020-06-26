@@ -1,0 +1,114 @@
+<h2>Employee</h2>
+<div class="mat-elevation-z8 basic-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="hidden">
+            <input type="hidden" id="id" formControlName="id" />
+        </div>
+
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input
+                    matInput
+                    #input
+                    formControlName="name"
+                    maxlength="255"
+                    placeholder="Ex. Company GmbH"
+                    required
+                />
+                <mat-error *ngIf="input.size">Name is invalid</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Surname</mat-label>
+                <input
+                    matInput
+                    #input
+                    formControlName="surname"
+                    maxlength="255"
+                    placeholder="Ex. Fijalkowski"
+                    required
+                />
+                <mat-error *ngIf="input.size">Surname is invalid</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input
+                    matInput
+                    #input
+                    formControlName="email"
+                    maxlength="255"
+                    placeholder="Ex. your@email.com"
+                />
+                <mat-error *ngIf="input.size">Email is invalid</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Address</mat-label>
+                <input
+                    matInput
+                    #input
+                    formControlName="address"
+                    maxlength="255"
+                    placeholder="Ex. 14th Street, 2244, Köln"
+                />
+                <mat-error *ngIf="input.size">Address is invalid</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Salary</mat-label>
+                <input
+                    type="number"
+                    matInput
+                    #input
+                    formControlName="salary"
+                    placeholder="Ex. 100000"
+                    class="example-right-align"
+                />
+                <span matPrefix>€</span>
+                <span matSuffix>.00</span>
+                <mat-error *ngIf="input.size">Salary is invalid</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-label>Company</mat-label>
+                <mat-select [formControl]="form.controls.company">
+                    <mat-option
+                        [value]="option.id"
+                        *ngFor="let option of companyList"
+                        >{{ option.name }}</mat-option
+                    >
+                </mat-select>
+                <mat-error *ngIf="input.size">Company is invalid</mat-error>
+            </mat-form-field>
+        </div>
+
+        <button
+            type="submit"
+            mat-stroked-button
+            matTooltip="Save information"
+            color="primary"
+        >
+            Save
+        </button>
+        <button
+            type="button"
+            mat-stroked-button
+            matTooltip="Click to Cancel"
+            color="basic"
+            routerLink="/company"
+            routerLinkActive="active"
+        >
+            Cancel
+        </button>
+    </form>
+</div>
