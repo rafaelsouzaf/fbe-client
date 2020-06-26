@@ -36,9 +36,8 @@ ng serve --open
 
 ## TODO
 
-- Add Employee Component and Service.
-- Add average salary to some interface.
-- Handle HTTP error codes from backend.
-- Improve design. Angular Material maybe.
-- Tests.
-- Deploy to AWS?
+- [X] Handle HTTP error codes from backend.
+- [X] Improve design. Angular Material maybe.
+- [ ] Add average salary to some interface.
+- [ ] Tests.
+- [ ] Deploy to AWS?
