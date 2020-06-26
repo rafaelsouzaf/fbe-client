@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CompanyService } from '../company.service';
-import { catchError } from 'rxjs/operators';
-import { handleError } from '../../util/Error';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { DialogComponent } from '../../util/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-company-list',
@@ -16,30 +16,42 @@ export class CompanyListComponent implements OnInit {
 
     @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-    constructor(private companyService: CompanyService) {}
+    constructor(
+        private companyService: CompanyService,
+        private dialog: MatDialog
+    ) {}
 
     ngOnInit(): void {
         this.getAll();
     }
 
     getAll(): void {
-        this.companyService
-            .getAll()
-            .pipe(catchError(handleError))
-            .subscribe(result => {
-                // @ts-ignore
-                this.dataSource = new MatTableDataSource(result.data);
-                this.dataSource.sort = this.sort;
-            });
+        this.companyService.getAll().subscribe(result => {
+            // @ts-ignore
+            this.dataSource = new MatTableDataSource(result.data);
+            this.dataSource.sort = this.sort;
+        });
     }
 
     delete(id: number) {
-        this.companyService
-            .delete(id)
-            .pipe(catchError(handleError))
-            .subscribe(result => {
-                alert('Content was deleted!');
+        this.companyService.delete(id).subscribe(
+            result => {
                 this.getAll();
-            });
+                this.dialog.open(DialogComponent, {
+                    data: {
+                        title: 'Success',
+                        message: 'Content was deleted!'
+                    }
+                });
+            },
+            error => {
+                this.dialog.open(DialogComponent, {
+                    data: {
+                        title: 'Error',
+                        message: error.error.error.message
+                    }
+                });
+            }
+        );
     }
 }

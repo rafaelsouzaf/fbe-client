@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CompanyService } from '../company.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError } from 'rxjs/operators';
-import { handleError } from '../../util/Error';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../../util/dialog/dialog.component';
 
 @Component({
     selector: 'app-company-edit',
@@ -17,7 +17,8 @@ export class CompanyEditComponent implements OnInit {
     constructor(
         private companyService: CompanyService,
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private dialog: MatDialog
     ) {}
 
     ngOnInit(): void {
@@ -40,10 +41,24 @@ export class CompanyEditComponent implements OnInit {
     onSubmit() {
         this.companyService
             .update(this.form.value.id, this.form.value)
-            .pipe(catchError(handleError))
-            .subscribe(result => {
-                alert('Content was updated!');
-                this.router.navigate(['company']);
-            });
+            .subscribe(
+                result => {
+                    this.router.navigate(['company']);
+                    this.dialog.open(DialogComponent, {
+                        data: {
+                            title: 'Success',
+                            message: 'Content was updated!'
+                        }
+                    });
+                },
+                error => {
+                    this.dialog.open(DialogComponent, {
+                        data: {
+                            title: 'Error',
+                            message: error.error.error.message
+                        }
+                    });
+                }
+            );
     }
 }

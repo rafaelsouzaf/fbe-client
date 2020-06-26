@@ -17,6 +17,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
+import { DialogComponent } from './util/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     declarations: [
@@ -24,7 +26,8 @@ import { MatCardModule } from '@angular/material/card';
         HomeComponent,
         CompanyListComponent,
         CompanyAddComponent,
-        CompanyEditComponent
+        CompanyEditComponent,
+        DialogComponent
     ],
     imports: [
         BrowserModule,
@@ -39,7 +42,8 @@ import { MatCardModule } from '@angular/material/card';
         MatFormFieldModule,
         MatInputModule,
         MatSortModule,
-        MatCardModule
+        MatCardModule,
+        MatDialogModule
     ],
     providers: [],
     bootstrap: [AppComponent]
