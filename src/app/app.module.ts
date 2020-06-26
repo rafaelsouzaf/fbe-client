@@ -9,6 +9,13 @@ import { HomeComponent } from './home/home.component';
 import { CompanyListComponent } from './company/company-list/company-list.component';
 import { CompanyAddComponent } from './company/company-add/company-add.component';
 import { CompanyEditComponent } from './company/company-edit/company-edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
     declarations: [
@@ -23,7 +30,14 @@ import { CompanyEditComponent } from './company/company-edit/company-edit.compon
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatTableModule,
+        MatTooltipModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSortModule
     ],
     providers: [],
     bootstrap: [AppComponent]

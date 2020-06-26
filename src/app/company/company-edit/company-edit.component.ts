@@ -43,7 +43,6 @@ export class CompanyEditComponent implements OnInit {
             .pipe(catchError(handleError))
             .subscribe(result => {
                 alert('Content was updated!');
-                console.log(result);
                 this.router.navigate(['company']);
             });
     }

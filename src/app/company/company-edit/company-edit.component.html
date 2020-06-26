@@ -1,31 +1,38 @@
-<div class="col-md-6 user-container">
-    <h2 class="text-center">Company</h2>
+<h2>Company</h2>
+<div class="mat-elevation-z8 basic-container">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="hidden">
             <input type="hidden" id="id" formControlName="id" />
         </div>
+
         <div class="form-group">
-            <label for="name">Name:</label>
-            <input
-                type="text"
-                id="name"
-                formControlName="name"
-                class="form-control"
-            />
+            <mat-form-field appearance="fill">
+                <mat-label>Enter company name</mat-label>
+                <input
+                    matInput
+                    #input
+                    formControlName="name"
+                    maxlength="255"
+                    placeholder="Ex. Company GmbH"
+                    required
+                />
+                <mat-error *ngIf="input.size">Name is invalid</mat-error>
+            </mat-form-field>
         </div>
-        <div class="form-group">
-            <label for="createdAt">Created at:</label>
-            <input
-                type="text"
-                id="createdAt"
-                formControlName="createdAt"
-                class="form-control"
-            />
-        </div>
-        <button class="btn btn-success">Save</button>
+
+        <button
+            type="submit"
+            mat-stroked-button
+            matTooltip="Save information"
+            color="primary"
+        >
+            Save
+        </button>
         <button
             type="button"
-            class="btn"
+            mat-stroked-button
+            matTooltip="Click to Cancel"
+            color="basic"
             routerLink="/company"
             routerLinkActive="active"
         >

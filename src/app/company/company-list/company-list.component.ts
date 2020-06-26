@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CompanyService } from '../company.service';
-import { Company } from '../company';
 import { catchError } from 'rxjs/operators';
 import { handleError } from '../../util/Error';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
     selector: 'app-company-list',
@@ -10,7 +11,10 @@ import { handleError } from '../../util/Error';
     styleUrls: ['./company-list.component.css']
 })
 export class CompanyListComponent implements OnInit {
-    companyList: Company[];
+    displayedColumns: string[] = ['id', 'name', 'createdAt', 'actions'];
+    dataSource = new MatTableDataSource();
+
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
 
     constructor(private companyService: CompanyService) {}
 
@@ -24,7 +28,8 @@ export class CompanyListComponent implements OnInit {
             .pipe(catchError(handleError))
             .subscribe(result => {
                 // @ts-ignore
-                this.companyList = result.data;
+                this.dataSource = new MatTableDataSource(result.data);
+                this.dataSource.sort = this.sort;
             });
     }
 
@@ -34,7 +39,6 @@ export class CompanyListComponent implements OnInit {
             .pipe(catchError(handleError))
             .subscribe(result => {
                 alert('Content was deleted!');
-                console.log(result);
                 this.getAll();
             });
     }
