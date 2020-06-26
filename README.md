@@ -27,6 +27,9 @@ nvm use
 # Install dependencies
 npm install
 
+# Install Angular CLI
+npm install -g @angular/cli
+
 # Start App
 ng serve --open
 ```
