@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Company } from './company';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CompanyService {
-    private apiServer = 'http://localhost:8081';
+    private apiServer = environment.apiUrl;
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json'
