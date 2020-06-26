@@ -19,6 +19,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
 import { DialogComponent } from './util/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
+import { EmployeeEditComponent } from './employee/employee-edit/employee-edit.component';
+import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
     declarations: [
@@ -27,7 +31,10 @@ import { MatDialogModule } from '@angular/material/dialog';
         CompanyListComponent,
         CompanyAddComponent,
         CompanyEditComponent,
-        DialogComponent
+        DialogComponent,
+        EmployeeListComponent,
+        EmployeeEditComponent,
+        EmployeeAddComponent
     ],
     imports: [
         BrowserModule,
@@ -43,7 +50,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatInputModule,
         MatSortModule,
         MatCardModule,
-        MatDialogModule
+        MatDialogModule,
+        MatSelectModule
     ],
     providers: [],
     bootstrap: [AppComponent]
