@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { MatSortModule } from '@angular/material/sort';
         MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSortModule
+        MatSortModule,
+        MatCardModule
     ],
     providers: [],
     bootstrap: [AppComponent]
