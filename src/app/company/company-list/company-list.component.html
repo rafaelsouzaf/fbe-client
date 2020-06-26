@@ -1,1 +1,19 @@
-<p>company-list works!</p>
+<h2>Company List</h2>
+<a [routerLink]="'/company/add'">Add</a>
+<ul>
+    <li *ngFor="let company of companyList">
+        {{ company.name }} - {{ company.createdAt }}
+        <div>
+            <span
+                ><button [routerLink]="'/company/edit/' + company.id">
+                    Edit
+                </button></span
+            >
+            <span
+                ><button type="button" (click)="delete(company.id)">
+                    Delete
+                </button></span
+            >
+        </div>
+    </li>
+</ul>
