@@ -6,6 +6,9 @@ https://github.com/rafaelsouzaf/fbe-client
 Backend Project:
 https://github.com/rafaelsouzaf/fbe
 
+## Demo
+https://fbe-client.herokuapp.com
+
 ## Requirement Specification
 Please visit https://gist.github.com/rafaelsouzaf/01cf788673c617802b70392f4bb7e3dd
 
@@ -38,6 +41,6 @@ ng serve --open
 
 - [X] Handle HTTP error codes from backend.
 - [X] Improve design. Angular Material maybe.
+- [X] Deployed to Heroku
 - [ ] Add average salary to some interface.
 - [ ] Tests.
-- [ ] Deploy to AWS?
