@@ -18,6 +18,7 @@ th.mat-sort-header-sorted {
 .basic-container {
     padding: 30px;
     min-height: 150px;
+    margin-bottom: 30px;
 }
 .form-group {
     margin-bottom: 10px;

@@ -5,20 +5,24 @@ import { Observable } from 'rxjs';
 import { Employee } from './employee';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class EmployeeService {
     private apiServer = environment.apiUrl;
     httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json'
-        })
+            'Content-Type': 'application/json',
+        }),
     };
 
     constructor(private httpClient: HttpClient) {}
 
     getAll(): Observable<Employee[]> {
         return this.httpClient.get<Employee[]>(this.apiServer + '/employee');
+    }
+
+    count(): Observable<number> {
+        return this.httpClient.get<number>(this.apiServer + '/employee/count');
     }
 
     getById(id): Observable<Employee> {

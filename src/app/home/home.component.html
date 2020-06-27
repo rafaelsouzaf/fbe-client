@@ -1,13 +1,55 @@
-<div class="card-container">
-    <mat-card>
-        <mat-card-title>Employee</mat-card-title>
-        <mat-card-subtitle>Number of employees</mat-card-subtitle>
-        <mat-card-content>xxxxxx</mat-card-content>
-    </mat-card>
+<h2>Dashboard</h2>
+<div class="mat-elevation-z8 basic-container">
+    <div class="card-container">
+        <mat-card>
+            <mat-card-title>Employee</mat-card-title>
+            <mat-card-subtitle>Number of employees</mat-card-subtitle>
+            <mat-card-content>{{ totalEmployees }}</mat-card-content>
+        </mat-card>
+
+        <mat-card>
+            <mat-card-title>Company</mat-card-title>
+            <mat-card-subtitle>Number of Companies</mat-card-subtitle>
+            <mat-card-content>{{ totalCompanies }}</mat-card-content>
+        </mat-card>
+    </div>
 
     <mat-card>
         <mat-card-title>Company</mat-card-title>
-        <mat-card-subtitle>Number of Companies</mat-card-subtitle>
-        <mat-card-content>xxxxxxx</mat-card-content>
+        <mat-card-subtitle>Average salary by company</mat-card-subtitle>
+        <mat-card-content>
+            <table
+                mat-table
+                matSort
+                matSortActive="id"
+                matSortDirection="asc"
+                class="mat-elevation-z8"
+                [dataSource]="dataSource"
+            >
+                <!-- Namme Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                        Name
+                    </th>
+                    <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+                </ng-container>
+
+                <!-- Avg Column -->
+                <ng-container matColumnDef="avgSalary">
+                    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                        Average Salary
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                        {{ row.avgSalary | currency: "EUR" }}
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+            </table>
+        </mat-card-content>
     </mat-card>
 </div>

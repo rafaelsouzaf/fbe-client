@@ -3,3 +3,7 @@ export interface Company {
     name: string;
     createdAt: Date;
 }
+
+export interface CompanyWithAvgSalary extends Company {
+    avgSalary: number;
+}
