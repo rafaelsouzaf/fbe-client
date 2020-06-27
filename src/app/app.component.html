@@ -1,17 +1,7 @@
-<h1>FBE Web Client</h1>
-
-<nav>
-    <ul>
-        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-        <li>
-            <a routerLink="/company" routerLinkActive="active">Company List</a>
-        </li>
-        <li>
-            <a routerLink="/employee" routerLinkActive="active"
-                >Employee List</a
-            >
-        </li>
-    </ul>
+<nav class="menu">
+    <button mat-flat-button routerLink="/home" routerLinkActive="active">Home</button>
+    <button mat-flat-button routerLink="/company" routerLinkActive="active">Company List</button>
+    <button mat-flat-button routerLink="/employee" routerLinkActive="active">Employee List</button>
 </nav>
 
 <!-- The routed views render in the <router-outlet>-->

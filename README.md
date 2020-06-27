@@ -42,5 +42,5 @@ ng serve --open
 - [X] Handle HTTP error codes from backend.
 - [X] Improve design. Angular Material maybe.
 - [X] Deployed to Heroku
-- [ ] Add average salary to some interface.
+- [X] Add average salary to some interface.
 - [ ] Tests.
