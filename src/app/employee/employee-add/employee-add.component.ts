@@ -27,7 +27,7 @@ export class EmployeeAddComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = new FormGroup({
-            id: new FormControl(0, Validators.required),
+            id: new FormControl(0),
             name: new FormControl({ value: '' }, Validators.required),
             surname: new FormControl({ value: '' }, Validators.required),
             email: new FormControl('', [Validators.required, Validators.email]),
