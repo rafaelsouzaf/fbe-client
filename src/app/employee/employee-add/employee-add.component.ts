@@ -32,7 +32,7 @@ export class EmployeeAddComponent implements OnInit {
             surname: new FormControl({ value: '' }, Validators.required),
             email: new FormControl('', [Validators.required, Validators.email]),
             address: new FormControl({ value: '' }),
-            salary: new FormControl({ value: 0 }, Validators.required),
+            salary: new FormControl({ value: 0 }, [Validators.required, Validators.min(0)]),
             company: new FormControl({ value: '' }, Validators.required),
             createdAt: new FormControl(
                 { value: '', disabled: true },
